@@ -1,4 +1,11 @@
-### Core / Cluster Architecture
+### Teh Pod of Minerva
+https://interactive.linuxacademy.com/diagrams/ThePodofMinerva.html
+https://www.lucidchart.com/documents/view/b1b62a6e-1266-41dd-b48d-3c44252fb88f/fB.lPxz788ce
+
+############################
+Core Concepts
+############################
+### Cluster Architecture
 kubectl get nodes				# List all nodes in the cluster
 kubectl get pods --all-namespaces 		# List pods in all namespaces
 kubectl get pods --all-namespaces -o wide 	# List all the pods in the cluster in detail
@@ -8,9 +15,23 @@ kubectl delete pod nginx			# Delete the pod nginx
 
 ### API Primitives
 kubects create -f nginx.yaml 			# Create deployment from YAML
-kubectl get deplyment nginx-deployment -o yaml  # Get the full YAML back
+kubectl get deployment nginx-deployment -o yaml  # Get the full YAML back
 kubectl get pods --show-labels 			# Show all pod labels
 kubectl label pods <pod name> 	env=prod 	# Apply label to a pod
 kubectl get pods -L env 			# See specific labels
 kubectl annotate deployment nginx-deployment mycompany.com/someannotations="chad"	# Annotate a deployment
-kubectl 
+kubectl get pods --field-selector status.phase=Running					# Use field selector e.g. Running/Pending...
+kubectl get componentstatus			#
+Kubectl get services --field-selector metadata.namespace=default  # Another example for "field.selector"
+kubectl get pods --field-selector status.phase=Pending,metadata.namespace=default # Combine 2 previous commands
+kubectl get pods --field-selector status.phase==Pending,metadata.namespace==default # ==
+kubectl get pods --field-selector status.phase!=Running,metadata.namespace==default # !=
+
+### Services & Network
+kubectl get pods -o wide        # View pods and their IP addresses
+kubectl create -f nginx-nodeport.yaml # Create service from YAML
+
+
+############################
+Install, Config and Validate
+############################
