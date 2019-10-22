@@ -3,7 +3,7 @@ https://interactive.linuxacademy.com/diagrams/ThePodofMinerva.html
 https://www.lucidchart.com/documents/view/b1b62a6e-1266-41dd-b48d-3c44252fb88f/fB.lPxz788ce
 
 ############################
-Core Concepts
+2 Core Concepts
 ############################
 ### Cluster Architecture
 kubectl get nodes				# List all nodes in the cluster
@@ -28,8 +28,10 @@ kubectl get pods --field-selector status.phase==Pending,metadata.namespace==defa
 kubectl get pods --field-selector status.phase!=Running,metadata.namespace==default # !=
 
 ### Services & Network
-kubectl get pods -o wide        # View pods and their IP addresses
+kubectl get pods -o wide              # View pods and their IP addresses
 kubectl create -f nginx-nodeport.yaml # Create service from YAML
+kubectl get services nginx-nodeport   # Show the nginx-nodeport services
+curl localhost:30080                  # Access the app over node port
 
 
 ############################
