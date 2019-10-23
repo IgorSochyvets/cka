@@ -1,1 +1,1 @@
-These are notes from CKA Linux Academy course.
+These are notes from Certified Kubernetes Adminisrator (CKA) Linux Academy course.
