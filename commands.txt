@@ -14,7 +14,7 @@ kubectl describe pod nginx			# All details about the pod nginx
 kubectl delete pod nginx			# Delete the pod nginx
 
 ### API Primitives
-kubects create -f nginx.yaml 			# Create deployment from YAML
+kubectl create -f nginx.yaml 			# Create deployment from YAML
 kubectl get deployment nginx-deployment -o yaml  # Get the full YAML back
 kubectl get pods --show-labels 			# Show all pod labels
 kubectl label pods <pod name> 	env=prod 	# Apply label to a pod
@@ -32,7 +32,7 @@ kubectl get pods -o wide              # View pods and their IP addresses
 kubectl create -f nginx-nodeport.yaml # Create service from YAML
 kubectl get services nginx-nodeport   # Show the nginx-nodeport services
 curl localhost:30080                  # Access the app over node port
-
+kubectl expose deployment nginx-deployment —port 80 —type nginx-nodeport  ??????????  # Expose deployment with service
 
 ############################
 Install, Config and Validate
